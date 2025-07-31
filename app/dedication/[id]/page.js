@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation';
 import React, { useEffect, useState, useRef } from 'react';
 import { LuPenLine } from 'react-icons/lu';
 
-const page = () => {
+const DedicationPage = () => {
   const params = useParams();
   const { id } = params;
   const [dedication, setDedication] = useState(null);
@@ -417,4 +417,4 @@ Send lyrics
   );
 };
 
-export default page;
+export default DedicationPage;

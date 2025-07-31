@@ -6,6 +6,7 @@ import FullPageLoader from "../components/loaders/FullPageLoader";
 import { useRouter } from 'next/navigation';
 import SuccessModal from "../components/SuccessModal";
 import InfoAlert from "../components/InfoAlert";
+import Image from "next/image";
 
 
 const Submit = () => {
@@ -332,7 +333,7 @@ paragraph={"They’ll hear the exact song you picked — and can enjoy the full 
                     setSelectSongLoad(false);
             }}
           >
-            <img src={song.image} alt="" className="w-20 h-14 object-contain " />
+            <Image src={song.image} alt="" height={80} width={56} className="w-20 h-14 object-contain " />
             <h3 className=" text-black font-medium text-sm md:text-base">{song.title}</h3>
           </button>
         </li>
