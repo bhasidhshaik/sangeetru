@@ -1,11 +1,8 @@
 /** @type {import('next').NextConfig} */
-
 const nextConfig = {
   images: {
-    domains: ['harmonicsurvey.com'], // <-- replace with the actual domain
+    domains: ['harmonicsurvey.com'],
   },
 }
-
-module.exports = nextConfig
 
 export default nextConfig;
