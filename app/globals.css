@@ -1,6 +1,22 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
 
+
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: #00171f !important; /* Customize this to your brand color */
+  height: 3px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+
 .text-color{
   color:#051923;
 

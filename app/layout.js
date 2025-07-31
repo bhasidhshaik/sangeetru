@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Tangerine } from "next/font/google";
 import { Montserrat } from "next/font/google";
+import LayoutClient from "./LayoutClient";
 
 export const tangerine = Tangerine({
   weight: ["400", "700"], 
@@ -31,9 +32,12 @@ export default function RootLayout({ children }) {
         className={`${montserrat.className} antialiased`}
       >
         <Header />
+        <LayoutClient>
+
         <div className="min-h-[100vh] bg-white mx-w-[1200px] mx-auto">
         {children}
         </div>
+        </LayoutClient>
         <Footer />
       </body>
     </html>
