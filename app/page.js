@@ -1,103 +1,72 @@
-import Image from "next/image";
+import { tangerine } from "./layout";
+import { LuPenLine } from "react-icons/lu";
+import { IoIosSearch } from "react-icons/io";
+import { IoMdHeartEmpty } from "react-icons/io";
 
+import Link from "next/link";
+import HeroCard from "./components/HeroCard";
 export default function Home() {
+  const sections = [
+    {
+      id:0,
+      title: "Express Through Lyrics",
+      text: "Music speaks when words fall short. Choose a song that captures your emotions and dedicate its lyrics to someone special in a meaningful way.",
+    },
+    {
+      id:1,
+      title: "Create a Unique Link",
+      text: "Transform your dedication into a beautifully synced lyrics experience. Our platform generates a special link for your message.",
+    },
+    {
+      id:2,
+      title: "Share the Feeling",
+      text: "Send your unique link to friends, family, or loved ones, and let them experience the lyrics in a way that feels personal and unforgettable.",
+    },
+  ];
+  
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+    <div className="flex flex-col items-center min-h-screen md:py-12 py-6 px-4">
+      <div className=" flex flex-col items-center gap-y-8">
+        <div className=" flex flex-col md:gap-y-6 gap-y-2 items-center">
+          <div>
+            <h3 className= {` ${tangerine.className} text-center text-color tangerine-font md:text-6xl text-3xl font-tangerine`}>Turn emotions into unforgettable  moments <br/> with a message that sings.</h3>
+          </div>
+          <div>
+            <h2 className=" flex justify-center font-semibold text-[#595959] gap-x-[3px] md:text-lg text-sm">
+           <span> Express with Lyrics, Connect with Hearts </span><span className="flex items-center"><IoMdHeartEmpty /></span>
+            </h2>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className=" flex gap-x-4 gap-y-2 md:gap-y-0 flex-col md:flex-row w-full md:justify-center">
+        <Link href={'/submit'}>
+        <button type="button" className="cursor-pointer gap-x-2 text-white bg-[#051923] hover:bg-[#051923]/95 font-medium rounded-lg text-sm px-5 md:py-3 py-4 text-center justify-center inline-flex items-center me-2 mb-2 border border-[#051923] w-full md:w-fit  ">
+Write your story
+<span className=" flex items-center">
+
+<LuPenLine />
+</span>
+</button>
+        </Link>
+        <Link href={'/browse'}>
+<button type="button" className=" cursor-pointer gap-x-2 text-color bg-[#fff] hover:bg-gray-100 font-medium rounded-lg text-sm px-5 md:py-3 py-4 text-center flex items-center justify-center me-2 mb-2 border border-[#051923] w-full  md:w-fit ">
+Browse stories
+<span className="flex items-center">
+<IoIosSearch />
+
+</span>
+</button>
+        </Link>
+        </div>
+      </div>
+      <div className=" flex gap-x-4 gap-y-4 md:my-24 my-10 flex-wrap justify-center items-center ">
+        {sections.map((card)=>{
+          return <HeroCard key={card.id} title={card.title} text={card.text} />
+        })}
+      </div>
+     
+
     </div>
+    </>
   );
 }
