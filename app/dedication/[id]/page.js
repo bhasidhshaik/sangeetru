@@ -3,7 +3,7 @@ import InfoAlert from '@/app/components/InfoAlert';
 import FullPageLoader from '@/app/components/loaders/FullPageLoader';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { LuPenLine } from 'react-icons/lu';
 
 const DedicationPage = () => {
@@ -66,9 +66,9 @@ useEffect(() => {
   }
 
   return () => observer.disconnect();
-}, [messageWords]);
+}, [messageWords , revealWords]);
 
-const revealWords = () => {
+const revealWords = useCallback(() => {
   let index = 0;
   const interval = setInterval(() => {
     setVisibleWordIndex((prev) => {
@@ -80,10 +80,10 @@ const revealWords = () => {
     });
     index++;
   }, 80); // Speed of reveal per word
-};
+}, [messageWords.length]);
 
 
-  const startScrolling = (lines) => {
+  const startScrolling = useCallback((lines) => {
     clearInterval(intervalRef.current);
     setHasFinished(false);
 
@@ -100,7 +100,7 @@ const revealWords = () => {
         });
       }
     }, 2500);
-  };
+  } , [isPaused]);
 
   const playerRef = useRef(null);
 
@@ -123,7 +123,7 @@ const handleResume = () => {
       startScrolling(lines);
     }
     return () => clearInterval(intervalRef.current);
-  }, [dedication, isPaused]);
+  }, [dedication, isPaused, startScrolling]);
 
   useEffect(() => {
     const scrollToLine = () => {
@@ -141,7 +141,7 @@ const handleResume = () => {
     };
 
     scrollToLine();
-  }, [currentLineIndex]);
+  }, [currentLineIndex, startScrolling]);
 
   if (notFound) return <div className="text-center text-red-500">Post not found</div>;
   if (!dedication) return (<div>
@@ -377,7 +377,7 @@ paragraph={' Song may not match with lyrics'}
   className="mt-4 px-6 py-2 "
 >
   <h3 className="text-md font-normal mb-2 text-center text-slate-600">
-    Also, here's a message from {dedication.sender}:
+    Also, here&apos;s a message from {dedication.sender}:
   </h3>
 
   <p className="text-color tangerine-font p-4 text-3xl text-center flex flex-wrap justify-center gap-1 rounded-2xl border border-slate-400 bg-slate-100 backdrop-blur-md shadow-lg max-w-xl mx-auto">
@@ -396,7 +396,7 @@ paragraph={' Song may not match with lyrics'}
 
 <div className=' flex flex-col items-center mt-8 gap-y-4'>
 <p className="text-color text-center">
-  Every line holds a feeling that {dedication.sender} wanted to share with you <br/> now it's your turn to share a song with someone special.
+  Every line holds a feeling that {dedication.sender} wanted to share with you <br/> now it&apos;s your turn to share a song with someone special.
 </p>
  <Link href={'/submit'}>
         <button type="button" className="cursor-pointer gap-x-2 text-white bg-[#051923] hover:bg-[#051923]/95 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2 border border-[#051923]  ">
