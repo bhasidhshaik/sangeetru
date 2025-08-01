@@ -18,9 +18,28 @@ const DedicationPage = () => {
   const [showPlayer, setShowPlayer] = useState(false);
   const [songLoading, setSongLoading] = useState(false);
   const [cannotPlaySong, setCannotPlaySong] = useState(false)
+  
+  const messageRef = useRef(null);
+const [visibleWordIndex, setVisibleWordIndex] = useState(-1);
+const [messageWords, setMessageWords] = useState([]);
 const [playerKey, setPlayerKey] = useState(0); // for forcing re-render
 
   const containerRef = useRef(null);
+
+  const revealWords = useCallback(() => {
+  let index = 0;
+  const interval = setInterval(() => {
+    setVisibleWordIndex((prev) => {
+      if (prev >= messageWords.length - 1) {
+        clearInterval(interval);
+        return prev;
+      }
+      return prev + 1;
+    });
+    index++;
+  }, 80); // Speed of reveal per word
+}, [messageWords?.length]);
+
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -42,9 +61,6 @@ const [playerKey, setPlayerKey] = useState(0); // for forcing re-render
     if (id) fetchPost();
   }, [id]);
 
-  const messageRef = useRef(null);
-const [visibleWordIndex, setVisibleWordIndex] = useState(-1);
-const [messageWords, setMessageWords] = useState([]);
 
 useEffect(() => {
   // Split message into words once
@@ -68,19 +84,6 @@ useEffect(() => {
   return () => observer.disconnect();
 }, [messageWords , revealWords]);
 
-const revealWords = useCallback(() => {
-  let index = 0;
-  const interval = setInterval(() => {
-    setVisibleWordIndex((prev) => {
-      if (prev >= messageWords.length - 1) {
-        clearInterval(interval);
-        return prev;
-      }
-      return prev + 1;
-    });
-    index++;
-  }, 80); // Speed of reveal per word
-}, [messageWords.length]);
 
 
   const startScrolling = useCallback((lines) => {

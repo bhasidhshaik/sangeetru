@@ -230,6 +230,7 @@ paragraph={"They’ll hear the exact song you picked — and can enjoy the full 
           <input
             type="text"
             id="sender"
+            autoFocus
             autoComplete="off"
             name="sender"
             value={form.sender}
