@@ -35,6 +35,7 @@ const Submit = () => {
   const [songYoutubeUrl, setSongYoutubeUrl ] = useState("")
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [dedicationId, setDedicationId] = useState("")
+  const [recipientName, setRecipientName] = useState("")
 
 const isFormValid =
   form.sender.trim() &&
@@ -181,12 +182,14 @@ setLyricsFetching(true)
     body: JSON.stringify(submissionData),
   });
     if (!res.ok) {
-      console.error("Failed to submit dedication");
+      console.log("Failed to submit dedication");
       return;
     }
   
     const data = await res.json();
     // console.log("Dedication saved:", data);
+
+    setRecipientName(submissionData?.recipient)
     
     // Reset form after submission
     setForm({
@@ -464,6 +467,7 @@ paragraph={"They’ll hear the exact song you picked — and can enjoy the full 
 
         {showSuccessModal && (
   <SuccessModal
+  recipient = {recipientName}
     dedicationId={dedicationId}
     onClose={() => setShowSuccessModal(false)}
   />

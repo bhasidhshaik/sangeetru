@@ -12,13 +12,14 @@ const MyDedications = () => {
 const [copiedId, setCopiedId] = useState(null);
 
 const handleCopy = async (link, id) => {
+  const fullText = `Hey, I made this lyrics dedication just for you 💌\n\nCheck it out here: ${link}`;
   try {
     if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
-      await navigator.clipboard.writeText(link);
+      await navigator.clipboard.writeText(fullText);
     } else {
       // Fallback method
       const textarea = document.createElement("textarea");
-      textarea.value = link;
+      textarea.value = fullText;
       textarea.setAttribute("readonly", "");
       textarea.style.position = "absolute";
       textarea.style.left = "-9999px";

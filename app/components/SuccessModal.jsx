@@ -6,7 +6,7 @@ import { FiCopy, FiX } from "react-icons/fi";
 import { FaShareAlt, FaEye, FaCheck } from "react-icons/fa";
 import Link from "next/link";
 
-const SuccessModal = ({ dedicationId, onClose }) => {
+const SuccessModal = ({ dedicationId, onClose , recipient}) => {
   const router = useRouter();
   const [copied, setCopied] = useState(false);
   const [link, setLink] = useState("");
@@ -21,13 +21,14 @@ const SuccessModal = ({ dedicationId, onClose }) => {
   }, [dedicationId]);
 
 const handleCopy = async () => {
+  const fullText =  `Hey ${recipient}, I made this lyrics dedication just for you 💌\n\nCheck it out here: ${link}`;
   try {
     if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
-      await navigator.clipboard.writeText(link);
+      await navigator.clipboard.writeText(fullText);
     } else {
       // Fallback method for mobile browsers
       const textarea = document.createElement("textarea");
-      textarea.value = link;
+      textarea.value = fullText;
       textarea.setAttribute("readonly", "");
       textarea.style.position = "absolute";
       textarea.style.left = "-9999px";
@@ -46,18 +47,24 @@ const handleCopy = async () => {
 };
 
 
-  const handleShare = async () => {
-    try {
-      if (canShare) {
-        await navigator.share({
-          title: "Song's lyrics dedication for you 💌",
-          url: link,
-        });
-      }
-    } catch (error) {
-      console.error("Sharing failed", error);
+const handleShare = async () => {
+  try {
+    const fullText =  `Hey ${recipient}, I made this lyrics dedication just for you 💌\n\nCheck it out here: ${link}`;
+
+
+    if (navigator.share) {
+      await navigator.share({
+        text: fullText, // 👈 Combine everything here
+      });
+    }  else {
+      await navigator.clipboard.writeText(fullText);
+      alert("Sharing not supported. The dedication link has been copied to your clipboard.");
     }
-  };
+  } catch (error) {
+    console.error("Sharing failed", error);
+  }
+};
+
 
   return (
     <div className="fixed inset-0 bg-[#000000f7]  flex justify-center items-center z-50">
@@ -84,7 +91,7 @@ const handleCopy = async () => {
           />
           <button
             onClick={handleCopy}
-            className="ml-2 text-blue-600 hover:text-blue-800 relative"
+            className="ml-2 text-blue-600 hover:text-blue-800 relative cursor-pointer"
             title={copied ? "Copied!" : "Copy"}
           >
             {copied ? <FaCheck size={18} /> : <FiCopy size={18} />}
