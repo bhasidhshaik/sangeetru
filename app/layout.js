@@ -49,7 +49,7 @@ export const metadata = {
     siteName: 'SangeeTru',
     images: [
       {
-        url: '/og-image.png', // Put this image in /public
+        url: '/og-image.jpg', // Put this image in /public
         width: 1200,
         height: 630,
         alt: 'SangeeTru — Personal Lyrics Dedications',
@@ -63,7 +63,7 @@ export const metadata = {
     description:
       'Create and share customized lyrics dedications with SangeeTru. Express emotions with music.',
     site: '@sangeetru',
-    images: ['/og-image.png'],
+    images: ['/og-image.jpg'],
   },
   icons: {
     icon: '/favicon.png',
