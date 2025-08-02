@@ -48,9 +48,9 @@ Write your story
 </span>
 </button>
         </Link>
-        <Link href={'/browse'}>
+        <Link href={'/history'}>
 <button type="button" className=" cursor-pointer gap-x-2 text-color bg-[#fff] hover:bg-gray-100 font-medium rounded-lg text-sm px-5 md:py-3 py-4 text-center flex items-center justify-center me-2 mb-2 border border-[#051923] w-full  md:w-fit ">
-Browse stories
+Browse your dedications
 <span className="flex items-center">
 <IoIosSearch />
 

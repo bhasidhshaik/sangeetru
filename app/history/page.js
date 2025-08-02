@@ -71,7 +71,24 @@ const handleCopy = async (link, id) => {
 );
 
   if (dedications.length === 0) {
-    return <p className="text-center mt-10 text-gray-600">No dedications found for your account.</p>;
+    return (
+      <div>
+
+      <p className="text-center mt-10 text-gray-600">No dedications found for your account.</p>
+      <div className="p-4" >
+ <Link href={'/submit'}>
+        <button type="button" className="cursor-pointer gap-x-2 text-white bg-[#051923] hover:bg-[#051923]/95 font-medium rounded-lg text-sm px-5 md:py-3 py-4 text-center justify-center inline-flex items-center me-2 mb-2 border border-[#051923] w-full md:w-fit  ">
+Send your first dedication
+<span className=" flex items-center">
+
+<LuPenLine />
+</span>
+</button>
+        </Link>
+      </div>
+      </div>
+    )
+      
   }
 
   return (
