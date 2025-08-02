@@ -33,7 +33,7 @@ export default function Home() {
             <h3 className= {` ${tangerine.className} text-center text-color tangerine-font md:text-6xl text-3xl font-tangerine`}>Dedicate a Song with Lyrics in Seconds. </h3>
           </div>
           <div>
-            <h2 className=" font-semibold text-[#595959] gap-x-[3px] md:text-lg text-sm">
+            <h2 className=" text-center font-semibold text-[#595959] gap-x-[3px] md:text-lg text-sm">
            <span> Create a personalized music message and share it with your loved ones. </span><span className=" inline-block"><IoMdHeartEmpty /></span>
             </h2>
           </div>
