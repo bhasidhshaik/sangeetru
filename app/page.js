@@ -30,18 +30,18 @@ export default function Home() {
       <div className=" flex flex-col items-center gap-y-8">
         <div className=" flex flex-col md:gap-y-6 gap-y-2 items-center">
           <div>
-            <h3 className= {` ${tangerine.className} text-center text-color tangerine-font md:text-6xl text-3xl font-tangerine`}>Turn emotions into unforgettable  moments <br/> with a message that sings.</h3>
+            <h3 className= {` ${tangerine.className} text-center text-color tangerine-font md:text-6xl text-3xl font-tangerine`}>Dedicate a Song with Lyrics in Seconds. </h3>
           </div>
           <div>
-            <h2 className=" flex justify-center font-semibold text-[#595959] gap-x-[3px] md:text-lg text-sm">
-           <span> Express with Lyrics, Connect with Hearts </span><span className="flex items-center"><IoMdHeartEmpty /></span>
+            <h2 className=" font-semibold text-[#595959] gap-x-[3px] md:text-lg text-sm">
+           <span> Create a personalized music message and share it with your loved ones. </span><span className=" inline-block"><IoMdHeartEmpty /></span>
             </h2>
           </div>
         </div>
         <div className=" flex gap-x-4 gap-y-2 md:gap-y-0 flex-col md:flex-row w-full md:justify-center">
         <Link href={'/submit'}>
         <button type="button" className="cursor-pointer gap-x-2 text-white bg-[#051923] hover:bg-[#051923]/95 font-medium rounded-lg text-sm px-5 md:py-3 py-4 text-center justify-center inline-flex items-center me-2 mb-2 border border-[#051923] w-full md:w-fit  ">
-Write your story
+Create Your Music Dedication
 <span className=" flex items-center">
 
 <LuPenLine />
