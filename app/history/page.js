@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FaCheck, FaCopy, FaRegCopy } from "react-icons/fa";
 import { FiCopy } from "react-icons/fi";
 import FullPageLoader from "../components/loaders/FullPageLoader";
+import { LuPenLine } from "react-icons/lu";
 
 const MyDedications = () => {
   const [dedications, setDedications] = useState([]);
